@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pierre Raimbaud — Vision & Innovation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND */
+
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 20% 20%, rgba(0,183,255,0.18), transparent 20%),
+      radial-gradient(circle at 80% 30%, rgba(0,255,170,0.14), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(119,0,255,0.16), transparent 25%);
+      filter:blur(70px);
+      animation:bgMove 12s infinite alternate ease-in-out;
+      z-index:-3;
+    }
+
+    @keyframes bgMove{
+      from{
+        transform:scale(1) rotate(0deg);
+      }
+      to{
+        transform:scale(1.15) rotate(4deg);
+      }
+    }
+
+    .grid{
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-2;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(15px);
+      background:rgba(0,0,0,0.2);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    nav h1{
+      font-size:1.4rem;
+      font-weight:900;
+      background:linear-gradient(90deg,#00b7ff,#00ffb7);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#00c3ff;
+    }
+
+    /* HERO */
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8%;
+      gap:80px;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:320px;
+      animation:fadeLeft 1.2s ease;
+    }
+
+    .hero-text h2{
+      font-size:5rem;
+      line-height:1;
+      font-weight:900;
+      margin-bottom:30px;
+      background:linear-gradient(90deg,#00b7ff,#7bffce);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      color:#d9d9d9;
+      line-height:1.9;
+      font-size:1.15rem;
+      max-width:700px;
+    }
+
+    .buttons{
+      margin-top:40px;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 35px;
+      border-radius:60px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+      text-decoration:none;
+      transition:0.4s;
+      color:white;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg,#009dff,#00d9ff);
+      box-shadow:0 0 30px rgba(0,183,255,0.4);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px) scale(1.05);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.1);
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      min-width:320px;
+      animation:fadeRight 1.2s ease;
+    }
+
+    .hero-image img{
+      width:400px;
+      border-radius:30px;
+      border:3px solid rgba(255,255,255,0.08);
+      box-shadow:
+      0 0 60px rgba(0,183,255,0.25),
+      0 0 120px rgba(0,255,170,0.12);
+      transition:0.4s;
+    }
+
+    .hero-image img:hover{
+      transform:scale(1.03) rotate(-1deg);
+    }
+
+    @keyframes fadeLeft{
+      from{
+        opacity:0;
+        transform:translateX(-60px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    @keyframes fadeRight{
+      from{
+        opacity:0;
+        transform:translateX(60px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:120px 8%;
+    }
+
+    .section-title{
+      font-size:3.5rem;
+      margin-bottom:20px;
+      font-weight:900;
+      background:linear-gradient(90deg,#ffffff,#7cefff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .section-sub{
+      color:#bcbcbc;
+      line-height:1.9;
+      max-width:900px;
+      margin-bottom:60px;
+      font-size:1.1rem;
+    }
+
+    /* CARDS */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      padding:40px;
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.08),
+      transparent
+      );
+      transform:translateX(-100%);
+    }
+
+    .card:hover::before{
+      animation:shine 1s;
+    }
+
+    @keyframes shine{
+      to{
+        transform:translateX(100%);
+      }
+    }
+
+    .card:hover{
+      transform:translateY(-12px);
+      border-color:#00c3ff;
+      box-shadow:0 0 40px rgba(0,195,255,0.2);
+    }
+
+    .card h3{
+      font-size:2rem;
+      margin-bottom:20px;
+      color:#7cefff;
+    }
+
+    .card p{
+      line-height:1.9;
+      color:#d7d7d7;
+    }
+
+    /* TIMELINE */
+
+    .timeline{
+      position:relative;
+      margin-top:70px;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      width:4px;
+      height:100%;
+      background:linear-gradient(#00b7ff,#00ffb7);
+    }
+
+    .timeline-item{
+      width:50%;
+      padding:30px;
+      position:relative;
+    }
+
+    .timeline-item:nth-child(odd){
+      left:0;
+      text-align:right;
+    }
+
+    .timeline-item:nth-child(even){
+      left:50%;
+    }
+
+    .timeline-content{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      padding:30px;
+      transition:0.4s;
+    }
+
+    .timeline-content:hover{
+      transform:scale(1.03);
+      border-color:#00c3ff;
+    }
+
+    .timeline-content h4{
+      font-size:1.7rem;
+      margin-bottom:15px;
+      color:#7cefff;
+    }
+
+    .timeline-content p{
+      line-height:1.8;
+      color:#d7d7d7;
+    }
+
+    /* BIG QUOTE */
+
+    .quote{
+      margin-top:100px;
+      text-align:center;
+      font-size:3rem;
+      font-weight:900;
+      line-height:1.5;
+      animation:pulse 3s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.03);
+        text-shadow:0 0 30px rgba(0,183,255,0.35);
+      }
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+      margin-top:50px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,0.04);
+      border-radius:25px;
+      padding:40px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat h2{
+      font-size:4rem;
+      color:#00c3ff;
+      margin-bottom:10px;
+    }
+
+    .stat p{
+      color:#cfcfcf;
+    }
+
+    footer{
+      padding:80px;
+      text-align:center;
+      color:#8d8d8d;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    /* PARTICLES */
+
+    .particle{
+      position:fixed;
+      width:5px;
+      height:5px;
+      background:#00b7ff;
+      border-radius:50%;
+      opacity:0.35;
+      pointer-events:none;
+      z-index:-1;
+      animation:float linear infinite;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(110vh) scale(0);
+      }
+      to{
+        transform:translateY(-120vh) scale(1.8);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-text h2{
+        font-size:3.5rem;
+      }
+
+      .timeline::before{
+        left:20px;
+      }
+
+      .timeline-item{
+        width:100%;
+        padding-left:70px;
+        padding-right:10px;
+      }
+
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even){
+        left:0;
+        text-align:left;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <div class="grid"></div>
+
+  <!-- PARTICULES -->
+
+  <script>
+    for(let i=0;i<120;i++){
+
+      const p=document.createElement("div");
+
+      p.classList.add("particle");
+
+      p.style.left=Math.random()*100+"vw";
+      p.style.animationDuration=(5+Math.random()*10)+"s";
+      p.style.opacity=Math.random();
+
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <h1>Pierre Raimbaud</h1>
+
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#timeline">Parcours</a></li>
+      <li><a href="#impact">Impact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <header>
+
+    <div class="hero-text">
+
+      <h2>
+        Pierre<br>
+        Raimbaud
+      </h2>
+
+      <p>
+        Entrepreneur, stratège et passionné d’innovation,
+        Pierre Raimbaud représente une nouvelle génération
+        de leaders : visionnaires, humains et tournés vers
+        l’impact durable.
+        <br><br>
+        Ce site immersif retrace son univers professionnel,
+        son approche du leadership et sa vision du futur.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#about" class="btn btn-primary">
+          Explorer le parcours
+        </a>
+
+        <a href="#impact" class="btn btn-secondary">
+          Voir l’impact
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+
+      <!-- Mets ici ton image -->
+      <img src="pierre.jpg" alt="Pierre Raimbaud">
+
+    </div>
+
+  </header>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">
+      Une personnalité tournée vers l’excellence
+    </h2>
+
+    <p class="section-sub">
+      À travers son parcours et sa présence professionnelle,
+      Pierre Raimbaud développe une image associée
+      à l’innovation, à la stratégie et à la création de valeur.
+      Son approche combine rigueur, créativité
+      et capacité à fédérer autour d’une vision.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>🚀 Innovation</h3>
+
+        <p>
+          Une approche moderne du travail,
+          centrée sur l’expérimentation,
+          la créativité et les solutions concrètes.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>🧠 Leadership</h3>
+
+        <p>
+          Inspirer, structurer et avancer :
+          trois dimensions essentielles
+          qui définissent sa manière d’aborder les projets.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>🌍 Vision</h3>
+
+        <p>
+          Penser plus loin que le présent,
+          construire avec ambition
+          et anticiper les évolutions du futur.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- VISION -->
+
+  <section id="vision">
+
+    <h2 class="section-title">
+      Une philosophie de l’impact
+    </h2>
+
+    <p class="section-sub">
+      Le véritable leadership ne consiste pas uniquement
+      à atteindre des objectifs.
+      Il s’agit aussi d’inspirer les autres,
+      de transmettre une vision
+      et de créer une dynamique durable.
+    </p>
+
+    <div class="quote">
+      “Construire le futur demande de l’ambition,
+      de la vision et une volonté constante d’innover.”
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2>∞</h2>
+        <p>Vision stratégique</p>
+      </div>
+
+      <div class="stat">
+        <h2>24/7</h2>
+        <p>Créativité & énergie</p>
+      </div>
+
+      <div class="stat">
+        <h2>100%</h2>
+        <p>Ambition</p>
+      </div>
+
+      <div class="stat">
+        <h2>01</h2>
+        <p>Objectif : avancer</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TIMELINE -->
+
+  <section id="timeline">
+
+    <h2 class="section-title">
+      Parcours & évolution
+    </h2>
+
+    <p class="section-sub">
+      Chaque étape professionnelle représente
+      une progression vers une vision plus large :
+      apprendre, construire et transformer les idées
+      en projets concrets.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+
+          <h4>Débuts</h4>
+
+          <p>
+            Construction d’une base solide
+            autour de la stratégie,
+            de la compréhension des systèmes
+            et de l’innovation.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+
+          <h4>Évolution</h4>
+
+          <p>
+            Développement progressif
+            d’une expertise professionnelle
+            orientée vers la création de valeur.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+
+          <h4>Leadership</h4>
+
+          <p>
+            Capacité à fédérer des équipes
+            et à transformer les idées
+            en projets ambitieux.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+
+          <h4>Le futur</h4>
+
+          <p>
+            Une trajectoire tournée vers
+            l’innovation, l’impact
+            et la construction de nouvelles opportunités.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- IMPACT -->
+
+  <section id="impact">
+
+    <h2 class="section-title">
+      Un impact qui dépasse le professionnel
+    </h2>
+
+    <p class="section-sub">
+      Pierre Raimbaud représente une approche moderne
+      du travail et de la collaboration :
+      élégante, ambitieuse et profondément humaine.
+      Son influence se ressent autant dans les idées
+      que dans la manière de les porter.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>⚡ Inspiration</h3>
+
+        <p>
+          Une capacité naturelle à transmettre
+          une énergie positive et motivante.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>📈 Stratégie</h3>
+
+        <p>
+          Une vision structurée,
+          pensée sur le long terme.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>💡 Créativité</h3>
+
+        <p>
+          Transformer des idées simples
+          en expériences mémorables.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="quote">
+      Pierre Raimbaud — vision, innovation et élégance.
+    </div>
+
+  </section>
+
+  <footer>
+
+    Site premium inspiré de l’univers professionnel de Pierre Raimbaud.
+    <br><br>
+
+    ⚠️ Mets ton image dans le même dossier que ce fichier
+    et renomme-la :
+    <strong>pierre.jpg</strong>
+
+  </footer>
+
+</body>
+</html>
