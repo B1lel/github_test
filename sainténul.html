@@ -2,32 +2,104 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Pourquoi Saint Etienen est une ville nulle</title>
+    <title>Saint Étienne — Ville Nulle & ASSE</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
-        body { background:#111; color:#fff; font-family: Arial, sans-serif; text-align:center; padding:40px; }
-        .card { background:#222; border:3px solid #800; display:inline-block; padding:20px; max-width:700px; }
-        h1 { color:#ff5555; margin:0 0 10px; font-size:2em; }
-        p { color:#ddd; }
-        ul { text-align:left; color:#eee; }
-        .big { font-size:3em; color:#ff0000; margin:10px 0; }
-        footer { margin-top:20px; font-size:0.8em; color:#999; }
+        * { box-sizing: border-box; }
+        body { background:#0a0a0a; color:#fff; font-family: Arial, sans-serif; text-align:center; padding:30px; margin:0; }
+
+        nav { margin-bottom:30px; }
+        nav a { color:#2ecc40; text-decoration:none; margin:0 15px; font-size:1.1em; font-weight:bold; border-bottom:2px solid #2ecc40; padding-bottom:3px; }
+        nav a:hover { color:#fff; border-color:#fff; }
+
+        .page { display:none; }
+        .page.active { display:block; }
+
+        .card { background:#161616; border:3px solid #1a7a1a; display:inline-block; padding:30px; max-width:750px; width:100%; border-radius:6px; }
+        h1 { color:#2ecc40; margin:0 0 15px; font-size:2em; }
+        p { color:#ccc; line-height:1.6; }
+        ul { text-align:left; color:#ddd; line-height:2; }
+        ul li::marker { color:#2ecc40; }
+        .big { font-size:3.5em; color:#2ecc40; margin:10px 0; text-shadow:0 0 20px #2ecc4055; }
+        .bad { color:#ff4444; font-weight:bold; }
+
+        table { width:100%; border-collapse:collapse; margin-top:15px; text-align:left; }
+        th { background:#1a7a1a; color:#fff; padding:8px 12px; }
+        td { padding:8px 12px; border-bottom:1px solid #222; color:#ccc; }
+        tr:hover td { background:#1a1a1a; }
+        .saison-bad td { color:#ff6666; }
+        .saison-meh td { color:#f0c040; }
+        .saison-ok td { color:#2ecc40; }
+
+        footer { margin-top:25px; font-size:0.8em; color:#555; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="big">VILLE NULLE</div>
-        <h1>Pourquoi Saint Etienen est une ville nulle</h1>
-        <p>Quelques raisons (brutes et sans détour) :</p>
-        <ul>
-            <li>Services municipaux lents et parfois absents.</li>
-            <li>Peu d'animations ou d'événements intéressants.</li>
-            <li>La propreté laisse souvent à désirer.</li>
-            <li>Transports pas pratiques pour se déplacer facilement.</li>
-            <li>Peu d'opportunités pour les jeunes ou les initiatives locales.</li>
-        </ul>
-        <p>Remarque : avis subjectif, destiné à être direct et tranchant.</p>
-        <footer>© Ville Nulle — site très brut</footer>
+
+    <nav>
+        <a href="#" onclick="showPage('ville')">🏙️ La Ville</a>
+        <a href="#" onclick="showPage('asse')">⚽ L'ASSE</a>
+    </nav>
+
+    <!-- PAGE 1 : LA VILLE -->
+    <div id="ville" class="page active">
+        <div class="card">
+            <div class="big">🏚️ VILLE NULLE</div>
+            <h1>Pourquoi Saint-Étienne est une ville nulle</h1>
+            <p>Quelques raisons <span class="bad">brutes</span> et sans détour :</p>
+            <ul>
+                <li>Une économie sinistrée depuis la fermeture des mines et de la sidérurgie.</li>
+                <li>Un centre-ville triste, gris et peu animé.</li>
+                <li>La propreté des rues laisse franchement à désirer.</li>
+                <li>Peu d'opportunités pour les jeunes, beaucoup fuient la ville.</li>
+                <li>Des transports en commun insuffisants pour une ville de cette taille.</li>
+                <li>Un tourisme quasi inexistant — personne ne vient à Saint-Étienne en vacances.</li>
+                <li>Une réputation nationale désastreuse.</li>
+            </ul>
+            <p>Remarque : avis subjectif et assumé. 😬</p>
+            <footer>© Ville Nulle — site très brut</footer>
+        </div>
     </div>
+
+    <!-- PAGE 2 : L'ASSE -->
+    <div id="asse" class="page">
+        <div class="card">
+            <div class="big">⚽ L'ASSE</div>
+            <h1>L'AS Saint-Étienne — Les Verts en galère</h1>
+            <p>Autrefois club légendaire, aujourd'hui symbole du déclin du football français.</p>
+
+            <h2 style="color:#2ecc40; margin-top:25px;">📉 Performances récentes</h2>
+            <table>
+                <thead>
+                    <tr><th>Saison</th><th>Compétition</th><th>Résultat</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="saison-bad"><td>2022-23</td><td>Ligue 2</td><td>🔴 Relégué en Ligue 2</td></tr>
+                    <tr class="saison-meh"><td>2023-24</td><td>Ligue 2</td><td>🟡 Remontée en Ligue 1 (playoff)</td></tr>
+                    <tr class="saison-bad"><td>2024-25</td><td>Ligue 1</td><td>🔴 Relégué à nouveau en Ligue 2</td></tr>
+                    <tr class="saison-bad"><td>2025-26</td><td>Ligue 2</td><td>🔴 Lutte pour ne pas descendre encore</td></tr>
+                </tbody>
+            </table>
+
+            <h2 style="color:#2ecc40; margin-top:25px;">😬 Ce qui cloche</h2>
+            <ul>
+                <li>Un club qui monte et redescend comme un yo-yo.</li>
+                <li>Des investissements insuffisants par rapport aux concurrents.</li>
+                <li>Des joueurs de qualité qui partent dès qu'ils peuvent.</li>
+                <li>Un Geoffroy-Guichard à moitié vide certains soirs.</li>
+                <li>La gloire des années 70 semble très, très loin.</li>
+            </ul>
+
+            <p style="margin-top:20px;">Malgré tout… les supporters <span style="color:#2ecc40; font-weight:bold;">restent fidèles</span>. Respect. 💚</p>
+            <footer>© Ville Nulle — ASSE Forever (ou pas)</footer>
+        </div>
+    </div>
+
+    <script>
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
 </body>
 </html>
