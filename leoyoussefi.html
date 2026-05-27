@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEO YOUSSEFI - WRaWRa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#050505;
+      overflow-x:hidden;
+      color:white;
+      font-family:'Montserrat',sans-serif;
+    }
+
+    /* Background animé */
+
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 10% 20%, rgba(255,0,80,0.25), transparent 20%),
+      radial-gradient(circle at 90% 30%, rgba(0,255,255,0.2), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(255,255,0,0.12), transparent 25%);
+      filter:blur(20px);
+      animation:bgAnim 12s infinite alternate ease-in-out;
+      z-index:-3;
+    }
+
+    @keyframes bgAnim{
+      from{
+        transform:scale(1) rotate(0deg);
+      }
+      to{
+        transform:scale(1.15) rotate(4deg);
+      }
+    }
+
+    /* bruit */
+
+    .noise{
+      position:fixed;
+      inset:0;
+      background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+      opacity:0.08;
+      z-index:-2;
+    }
+
+    /* header */
+
+    header{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+      position:relative;
+    }
+
+    .title{
+      font-family:'Anton',sans-serif;
+      font-size:8rem;
+      line-height:0.9;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      background:linear-gradient(90deg,#ff0055,#00f7ff,#fff700);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:glitch 2s infinite;
+    }
+
+    @keyframes glitch{
+      0%{
+        transform:translate(0);
+      }
+      20%{
+        transform:translate(-2px,2px);
+      }
+      40%{
+        transform:translate(2px,-2px);
+      }
+      60%{
+        transform:translate(-1px,1px);
+      }
+      80%{
+        transform:translate(1px,-1px);
+      }
+      100%{
+        transform:translate(0);
+      }
+    }
+
+    .subtitle{
+      margin-top:30px;
+      max-width:700px;
+      font-size:1.3rem;
+      color:#ddd;
+      line-height:1.7;
+      animation:fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .btn{
+      margin-top:40px;
+      padding:18px 40px;
+      border:none;
+      border-radius:60px;
+      background:linear-gradient(90deg,#ff0055,#ff7b00);
+      color:white;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.4s;
+      text-decoration:none;
+      box-shadow:0 0 20px rgba(255,0,85,0.4);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 40px rgba(255,0,85,0.8);
+    }
+
+    /* sections */
+
+    section{
+      padding:120px 10%;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:25px;
+      padding:35px;
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+      130deg,
+      transparent,
+      rgba(255,255,255,0.08),
+      transparent
+      );
+      transform:translateX(-100%);
+    }
+
+    .card:hover::before{
+      animation:shine 1s;
+    }
+
+    @keyframes shine{
+      to{
+        transform:translateX(100%);
+      }
+    }
+
+    .card:hover{
+      transform:translateY(-12px) rotate(-1deg);
+      border-color:#ff0055;
+      box-shadow:0 0 30px rgba(255,0,85,0.3);
+    }
+
+    .card h2{
+      font-size:2rem;
+      margin-bottom:15px;
+      color:#ff4b7d;
+    }
+
+    .card p{
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    /* texte énorme */
+
+    .mega{
+      margin-top:120px;
+      text-align:center;
+      font-size:5rem;
+      font-weight:900;
+      text-transform:uppercase;
+      color:white;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.05);
+        text-shadow:0 0 30px #ff0055;
+      }
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    footer{
+      padding:60px;
+      text-align:center;
+      color:#777;
+    }
+
+    /* particules */
+
+    .particle{
+      position:fixed;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#ff0055;
+      opacity:0.4;
+      pointer-events:none;
+      z-index:-1;
+      animation:float linear infinite;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(110vh) scale(0);
+      }
+      to{
+        transform:translateY(-120vh) scale(1.5);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <div class="noise"></div>
+
+  <!-- Particules -->
+
+  <script>
+    for(let i=0;i<80;i++){
+      const p=document.createElement("div");
+      p.classList.add("particle");
+
+      p.style.left=Math.random()*100+"vw";
+      p.style.animationDuration=(4+Math.random()*10)+"s";
+      p.style.opacity=Math.random();
+
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <header>
+
+    <h1 class="title">
+      LEO<br>YOUSSEFI
+    </h1>
+
+    <p class="subtitle">
+      Une créature mystérieuse connue pour son célèbre
+      "WRaWRa" légendaire.
+      Certains disent que ce son peut être entendu
+      dans plusieurs dimensions.
+    </p>
+
+    <a href="#wrawra" class="btn">
+      Découvrir le WRaWRa
+    </a>
+
+  </header>
+
+  <section id="wrawra">
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>🎤 WRaWRa</h2>
+        <p>
+          Leo maîtrise un langage ancien
+          composé exclusivement de "WRaWRa".
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🔥 Énergie</h2>
+        <p>
+          Son niveau d’énergie dépasse
+          les limites autorisées par la science.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>⚡ Présence</h2>
+        <p>
+          Quand Leo arrive,
+          l’ambiance passe automatiquement en mode chaos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🧠 Philosophie</h2>
+        <p>
+          "Pourquoi parler normalement
+          quand on peut faire WRaWRa ?"
+        </p>
+      </div>
+
+    </div>
+
+    <div class="mega">
+      WRaWRa SUPREMACY
+    </div>
+
+  </section>
+
+  <footer>
+    Site approuvé par le conseil officiel du WRaWRa™
+  </footer>
+
+</body>
+</html>
