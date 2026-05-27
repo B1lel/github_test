@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pourquoi Bilel est un beau gosse</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg, #111, #1f1f1f);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop') center/cover;
+    }
+
+    header h1{
+      font-size:4rem;
+      color:#ffd700;
+      text-shadow:0 0 20px rgba(255,215,0,0.8);
+      animation: glow 2s infinite alternate;
+    }
+
+    header p{
+      margin-top:20px;
+      font-size:1.3rem;
+      max-width:700px;
+      line-height:1.6;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ffd700;
+      }
+      to{
+        text-shadow:0 0 30px #ffae00;
+      }
+    }
+
+    .container{
+      padding:80px 10%;
+    }
+
+    .card{
+      background:#1e1e1e;
+      border-radius:20px;
+      padding:30px;
+      margin-bottom:30px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 40px rgba(255,215,0,0.2);
+    }
+
+    .card h2{
+      color:#ffd700;
+      margin-bottom:15px;
+      font-size:2rem;
+    }
+
+    .card p{
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    .qualities{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+      margin-top:40px;
+    }
+
+    .quality{
+      background:#292929;
+      padding:25px;
+      border-radius:15px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .quality:hover{
+      background:#ffd700;
+      color:black;
+      transform:scale(1.05);
+    }
+
+    .quality h3{
+      margin-bottom:10px;
+      font-size:1.5rem;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      background:#0d0d0d;
+      color:#999;
+    }
+
+    .btn{
+      margin-top:30px;
+      display:inline-block;
+      padding:15px 30px;
+      background:#ffd700;
+      color:black;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:white;
+      transform:scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bilel = Beau Gosse Ultime 😎</h1>
+    <p>
+      Bienvenue sur le site officiel qui prouve scientifiquement
+      que Bilel possède un niveau de charisme absolument illégal.
+    </p>
+
+    <a href="#explications" class="btn">
+      Découvrir la vérité
+    </a>
+  </header>
+
+  <section class="container" id="explications">
+
+    <div class="card">
+      <h2>Pourquoi tout le monde aime Bilel ?</h2>
+      <p>
+        Bilel combine plusieurs qualités rares :
+        le style, la confiance, le sourire et surtout une aura
+        qui fait bugger les gens autour de lui.
+      </p>
+    </div>
+
+    <div class="qualities">
+
+      <div class="quality">
+        <h3>🔥 Style</h3>
+        <p>
+          Toujours bien habillé.
+          Même en jogging il gagne le concours d’élégance.
+        </p>
+      </div>
+
+      <div class="quality">
+        <h3>😎 Charisme</h3>
+        <p>
+          Quand Bilel entre dans une pièce,
+          l’ambiance passe automatiquement en mode cinéma.
+        </p>
+      </div>
+
+      <div class="quality">
+        <h3>✨ Confiance</h3>
+        <p>
+          Il parle avec assurance et dégage une énergie positive.
+        </p>
+      </div>
+
+      <div class="quality">
+        <h3>💯 Aura</h3>
+        <p>
+          Les scientifiques cherchent encore une explication logique.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h2>Conclusion</h2>
+      <p>
+        Après analyse complète, il est officiellement confirmé
+        que Bilel est un énorme beau gosse.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+    Site créé avec admiration pour Bilel 👑
+  </footer>
+
+</body>
+</html>
