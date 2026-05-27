@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mélenchon 2027 — L'Union Populaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --rouge: #e63012;
+      --rouge-fonce: #b02000;
+      --jaune: #f5c800;
+      --noir: #0d0d0d;
+      --gris: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noir);
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 6%;
+      border-bottom: 3px solid var(--rouge);
+    }
+    .nav-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.4rem;
+      color: var(--rouge);
+      letter-spacing: 2px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--jaune); }
+
+    /* ===== HERO ===== */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(230,48,18,0.35), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(245,200,0,0.15), transparent 50%);
+      animation: heroBg 8s infinite alternate ease-in-out;
+    }
+    @keyframes heroBg {
+      from { transform: scale(1); }
+      to   { transform: scale(1.1); }
+    }
+
+    .hero-year {
+      font-family: 'Anton', sans-serif;
+      font-size: 11rem;
+      line-height: 1;
+      color: var(--rouge);
+      opacity: 0.12;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .tag {
+      display: inline-block;
+      background: var(--rouge);
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 3px;
+      margin-bottom: 25px;
+      animation: fadeDown 0.8s ease;
+    }
+
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    h1 span { color: var(--rouge); }
+
+    .hero-sub {
+      margin-top: 30px;
+      font-size: 1.25rem;
+      color: #ccc;
+      max-width: 650px;
+      line-height: 1.7;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .hero-btns {
+      margin-top: 45px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 1s ease 0.6s both;
+    }
+
+    .btn-rouge {
+      padding: 16px 40px;
+      background: var(--rouge);
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      box-shadow: 0 0 25px rgba(230,48,18,0.5);
+    }
+    .btn-rouge:hover { background: var(--rouge-fonce); transform: scale(1.05); }
+
+    .btn-outline {
+      padding: 16px 40px;
+      background: transparent;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 2px solid white;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--jaune); color: var(--jaune); }
+
+    /* ===== BANDE DEFILANTE ===== */
+    .ticker {
+      background: var(--rouge);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 18s linear infinite;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+    }
+    .ticker-inner span { margin: 0 50px; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    .section-title span { color: var(--rouge); }
+
+    .section-line {
+      width: 60px;
+      height: 4px;
+      background: var(--rouge);
+      margin-bottom: 50px;
+    }
+
+    /* ===== PROPOSITIONS ===== */
+    #programme { background: var(--gris); }
+
+    .props-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .prop-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 4px solid var(--rouge);
+      border-radius: 6px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+    .prop-card:hover {
+      background: rgba(230,48,18,0.1);
+      transform: translateY(-6px);
+      border-left-color: var(--jaune);
+    }
+    .prop-icon { font-size: 2.5rem; margin-bottom: 15px; }
+    .prop-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--jaune);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .prop-card p { color: #bbb; line-height: 1.7; font-size: 0.95rem; }
+
+    /* ===== CITATION ===== */
+    .quote-section {
+      background: var(--rouge);
+      text-align: center;
+      padding: 80px 8%;
+    }
+    .quote-section blockquote {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.3;
+      max-width: 900px;
+      margin: 0 auto 20px;
+    }
+    .quote-section cite {
+      font-size: 1rem;
+      opacity: 0.8;
+      font-style: normal;
+      letter-spacing: 2px;
+    }
+
+    /* ===== CHIFFRES ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .stat-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      color: var(--rouge);
+      display: block;
+    }
+    .stat-label { color: #aaa; font-size: 0.95rem; margin-top: 5px; }
+
+    /* ===== REJOINDRE ===== */
+    #rejoindre { background: var(--gris); text-align: center; }
+    #rejoindre .section-line { margin-left: auto; margin-right: auto; }
+
+    .join-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .join-form input {
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      color: white;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      outline: none;
+      transition: 0.3s;
+    }
+    .join-form input:focus { border-color: var(--rouge); }
+    .join-form input::placeholder { color: #777; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #080808;
+      border-top: 3px solid var(--rouge);
+      text-align: center;
+      padding: 40px;
+      color: #555;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--rouge); }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      font-size: 1.8rem;
+      opacity: 0.5;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">JLM 2027</div>
+    <div class="nav-links">
+      <a href="#programme">Programme</a>
+      <a href="#pourquoi">Pourquoi lui</a>
+      <a href="#rejoindre">Rejoindre</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero-bg"></div>
+    <div class="hero-year">2027</div>
+    <div class="hero-content">
+      <div class="tag">Présidentielle 2027</div>
+      <h1>Jean-Luc<br><span>Mélenchon</span></h1>
+      <p class="hero-sub">
+        Le peuple au pouvoir. Un programme pour une France plus juste,
+        plus écologique et souveraine. Il est temps de changer de République.
+      </p>
+      <div class="hero-btns">
+        <a href="#programme" class="btn-rouge">Voir le programme</a>
+        <a href="#rejoindre" class="btn-outline">Nous rejoindre</a>
+      </div>
+    </div>
+    <div class="scroll-arrow">↓</div>
+  </header>
+
+  <!-- BANDE DEFILANTE -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>🌹 UNION POPULAIRE</span>
+      <span>✊ LA FRANCE INSOUMISE</span>
+      <span>🌍 PLANIFICATION ÉCOLOGIQUE</span>
+      <span>📢 LE PEUPLE D'ABORD</span>
+      <span>⚖️ JUSTICE SOCIALE</span>
+      <span>🏛️ VIe RÉPUBLIQUE</span>
+      <span>🌹 UNION POPULAIRE</span>
+      <span>✊ LA FRANCE INSOUMISE</span>
+      <span>🌍 PLANIFICATION ÉCOLOGIQUE</span>
+      <span>📢 LE PEUPLE D'ABORD</span>
+      <span>⚖️ JUSTICE SOCIALE</span>
+      <span>🏛️ VIe RÉPUBLIQUE</span>
+    </div>
+  </div>
+
+  <!-- PROGRAMME -->
+  <section id="programme">
+    <div class="section-title">Le <span>Programme</span></div>
+    <div class="section-line"></div>
+    <div class="props-grid">
+
+      <div class="prop-card">
+        <div class="prop-icon">🌿</div>
+        <h3>Planification écologique</h3>
+        <p>Bifurcation écologique de toute l'économie. 100% énergies renouvelables d'ici 2050. Sortie des pesticides et protection de la biodiversité.</p>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-icon">⚖️</div>
+        <h3>Justice sociale</h3>
+        <p>SMIC à 1 600 € net, blocage des prix des produits essentiels, retraite à 60 ans et égalité salariale femmes-hommes.</p>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-icon">🏛️</div>
+        <h3>VIe République</h3>
+        <p>Assemblée constituante pour une nouvelle Constitution. Proportionnelle intégrale, droit de révoquer les élus, référendum d'initiative citoyenne.</p>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-icon">🏥</div>
+        <h3>Services publics</h3>
+        <p>Hôpitaux et écoles reconstruits et renforcés. Fin des déserts médicaux. Sécurité sociale étendue à de nouveaux besoins.</p>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-icon">🌐</div>
+        <h3>Souveraineté</h3>
+        <p>Désobéissance aux traités européens contraires à l'intérêt général. Retrait de l'OTAN. Politique étrangère indépendante et pacifiste.</p>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-icon">💶</div>
+        <h3>Fiscalité juste</h3>
+        <p>Grand impôt progressif sur le revenu, taxation des super-profits, héritage maximum de 12 millions d'euros.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <div class="quote-section">
+    <blockquote>
+      "L'avenir en commun,<br>c'est maintenant ou jamais."
+    </blockquote>
+    <cite>— Jean-Luc Mélenchon</cite>
+  </div>
+
+  <!-- POURQUOI LUI -->
+  <section id="pourquoi">
+    <div class="section-title">Pourquoi <span>lui</span> ?</div>
+    <div class="section-line"></div>
+    <div class="stats">
+      <div>
+        <span class="stat-num">40+</span>
+        <div class="stat-label">Ans d'engagement politique</div>
+      </div>
+      <div>
+        <span class="stat-num">22%</span>
+        <div class="stat-label">Au 1er tour 2022 — 3e force nationale</div>
+      </div>
+      <div>
+        <span class="stat-num">7M</span>
+        <div class="stat-label">Voix obtenues en 2022</div>
+      </div>
+      <div>
+        <span class="stat-num">1</span>
+        <div class="stat-label">Programme cohérent pour changer la France</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REJOINDRE -->
+  <section id="rejoindre">
+    <div class="section-title">Nous <span>rejoindre</span></div>
+    <div class="section-line"></div>
+    <p style="color:#aaa; margin-bottom:35px; max-width:500px; margin-left:auto; margin-right:auto;">
+      Ensemble, nous pouvons construire une France populaire, écologique et souveraine.
+      Laisse-nous ton contact.
+    </p>
+    <form class="join-form" onsubmit="handleJoin(event)">
+      <input type="text" placeholder="Ton prénom" required />
+      <input type="email" placeholder="Ton adresse e-mail" required />
+      <input type="text" placeholder="Ta ville" />
+      <button type="submit" class="btn-rouge" style="border:none; cursor:pointer;">
+        ✊ Je rejoins le mouvement
+      </button>
+    </form>
+    <p id="confirm" style="margin-top:20px; color:#2ecc40; display:none; font-weight:bold;">
+      Merci ! Bienvenue dans l'Union Populaire 🌹
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Mélenchon 2027</strong> — Union Populaire · La France Insoumise</p>
+    <p style="margin-top:8px;">Site de propagande fictif — à but humoristique et éducatif uniquement.</p>
+  </footer>
+
+  <script>
+    function handleJoin(e) {
+      e.preventDefault();
+      document.getElementById('confirm').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>
