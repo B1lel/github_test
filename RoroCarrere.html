@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bilel le Boss du GeoGuessr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Orbitron', sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* Background animé */
+
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 20% 20%, rgba(0,255,200,0.15), transparent 20%),
+      radial-gradient(circle at 80% 30%, rgba(0,150,255,0.2), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(255,0,150,0.15), transparent 20%);
+      animation:bgMove 10s infinite alternate ease-in-out;
+      z-index:-2;
+    }
+
+    @keyframes bgMove{
+      from{
+        transform:scale(1) rotate(0deg);
+      }
+      to{
+        transform:scale(1.1) rotate(2deg);
+      }
+    }
+
+    /* grille style geoguessr */
+
+    .grid{
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-1;
+      animation:gridMove 15s linear infinite;
+    }
+
+    @keyframes gridMove{
+      from{
+        transform:translateY(0);
+      }
+      to{
+        transform:translateY(40px);
+      }
+    }
+
+    header{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:20px;
+    }
+
+    .title{
+      font-size:5rem;
+      font-weight:900;
+      text-transform:uppercase;
+      color:#00ffe1;
+      text-shadow:
+      0 0 10px #00ffe1,
+      0 0 20px #00ffe1,
+      0 0 40px #00ffe1;
+      animation:flicker 2s infinite alternate;
+    }
+
+    @keyframes flicker{
+      0%{opacity:1;}
+      20%{opacity:0.8;}
+      40%{opacity:1;}
+      60%{opacity:0.9;}
+      100%{opacity:1;}
+    }
+
+    .subtitle{
+      margin-top:20px;
+      font-size:1.2rem;
+      max-width:800px;
+      color:#ddd;
+      animation:fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(50px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .scroll{
+      margin-top:50px;
+      padding:15px 35px;
+      border:2px solid #00ffe1;
+      border-radius:50px;
+      text-decoration:none;
+      color:#00ffe1;
+      transition:0.3s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .scroll::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background:#00ffe1;
+      transition:0.4s;
+      z-index:-1;
+    }
+
+    .scroll:hover::before{
+      left:0;
+    }
+
+    .scroll:hover{
+      color:black;
+    }
+
+    section{
+      padding:120px 10%;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.08),
+      transparent
+      );
+      transform:translateX(-100%);
+    }
+
+    .card:hover::after{
+      animation:shine 1s;
+    }
+
+    @keyframes shine{
+      to{
+        transform:translateX(100%);
+      }
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.03);
+      border-color:#00ffe1;
+      box-shadow:0 0 30px rgba(0,255,225,0.3);
+    }
+
+    .card h2{
+      color:#00ffe1;
+      margin-bottom:15px;
+      font-size:1.8rem;
+    }
+
+    .card p{
+      color:#ddd;
+      line-height:1.7;
+    }
+
+    .bigText{
+      text-align:center;
+      margin-top:120px;
+      font-size:3rem;
+      font-weight:900;
+      color:white;
+      opacity:0.9;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+        text-shadow:0 0 0px #00ffe1;
+      }
+      50%{
+        transform:scale(1.05);
+        text-shadow:0 0 20px #00ffe1;
+      }
+      100%{
+        transform:scale(1);
+        text-shadow:0 0 0px #00ffe1;
+      }
+    }
+
+    footer{
+      padding:50px;
+      text-align:center;
+      color:#888;
+    }
+
+    /* particules */
+
+    .particle{
+      position:fixed;
+      width:4px;
+      height:4px;
+      background:#00ffe1;
+      border-radius:50%;
+      opacity:0.5;
+      animation:float linear infinite;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(100vh);
+      }
+      to{
+        transform:translateY(-100vh);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <div class="grid"></div>
+
+  <!-- Particules -->
+
+  <script>
+    for(let i=0;i<60;i++){
+      const p=document.createElement("div");
+      p.classList.add("particle");
+
+      p.style.left=Math.random()*100+"vw";
+      p.style.animationDuration=(5+Math.random()*10)+"s";
+      p.style.opacity=Math.random();
+
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <header>
+
+    <h1 class="title">
+      BILEL
+    </h1>
+
+    <p class="subtitle">
+      Le seul humain capable de reconnaître un pays
+      grâce à un simple poteau électrique.
+      Une légende vivante du GeoGuessr.
+    </p>
+
+    <a href="#stats" class="scroll">
+      Voir les preuves
+    </a>
+
+  </header>
+
+  <section id="stats">
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>🌍 Vision Ultime</h2>
+        <p>
+          Bilel voit une route poussiéreuse...
+          et trouve instantanément le pays,
+          la région et parfois même le code postal.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>⚡ Réflexes</h2>
+        <p>
+          Temps moyen pour localiser une map :
+          environ 0.7 seconde.
+          Les satellites ont peur de lui.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🧠 IQ Cartographique</h2>
+        <p>
+          Son cerveau contient plus de routes
+          que Google Maps.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🔥 Aura Streamer</h2>
+        <p>
+          Chaque game ressemble à une finale
+          de coupe du monde.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="bigText">
+      "Mais comment il sait ça ???"
+    </div>
+
+  </section>
+
+  <footer>
+    Site certifié par les experts du GeoGuessr 🗺️
+  </footer>
+
+</body>
+</html>
