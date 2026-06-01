@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Index — Redirection</title>
+
+  <!-- redirection automatique après 3s -->
+  <meta http-equiv="refresh" content="3;url=pierre.html">
+
+  <style>
+    body{font-family:Inter,Arial,sans-serif;background:#050816;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    .card{max-width:720px;padding:28px;border-radius:12px;background:rgba(255,255,255,0.03);text-align:center;border:1px solid rgba(255,255,255,0.06)}
+    a{color:#00d9ff;text-decoration:none;font-weight:600}
+    ul{margin-top:16px;text-align:left}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Accès aux sites</h1>
+    <p>Vous allez être redirigé vers le site principal dans quelques secondes.</p>
+
+    <p>
+      Si la redirection ne fonctionne pas, cliquez sur l'un des liens ci‑dessous :
+    </p>
+
+    <ul>
+      <li><a href="pierre.html">Pierre Raimbaud — site principal</a></li>
+      <li><a href="site2.html">Autre site 1 (remplacez par l'URL réelle)</a></li>
+      <li><a href="site3.html">Autre site 2 (remplacez par l'URL réelle)</a></li>
+    </ul>
+
+    <p style="margin-top:12px"><a id="go" href="pierre.html">Aller maintenant</a></p>
+  </div>
+
+  <script>
+    // fallback JS : redirection après 2s si meta refresh ne fonctionne pas
+    setTimeout(()=>{ window.location.href = 'pierre.html'; }, 2000);
+  </script>
+</body>
+</html>
