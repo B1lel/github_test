@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merlin et le PSG - Double Champion d'Europe</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family: 'Segoe UI',sans-serif;
+    background:
+        radial-gradient(circle at top,#1f4fff 0%,#08112e 45%,#030712 100%);
+    color:white;
+    overflow-x:hidden;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    background:
+      linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+      url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:4rem;
+    text-shadow:0 0 20px #ffd700;
+}
+
+.hero h2{
+    font-size:2rem;
+    color:#ffd700;
+    margin:15px 0;
+}
+
+.hero p{
+    max-width:900px;
+    font-size:1.3rem;
+    line-height:1.8;
+}
+
+.trophy{
+    font-size:6rem;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.08)}
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    color:#ffd700;
+    margin:60px 0 30px;
+}
+
+.players{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.card{
+    display:flex;
+    gap:25px;
+    align-items:center;
+    margin:30px 0;
+    padding:25px;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 0 30px rgba(255,215,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 40px rgba(255,215,0,.4);
+}
+
+.card img{
+    width:240px;
+    height:240px;
+    object-fit:cover;
+    border-radius:20px;
+    border:4px solid #ffd700;
+}
+
+.card h3{
+    color:#ffd700;
+    margin-bottom:10px;
+    font-size:2rem;
+}
+
+.card p{
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+.footer{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.footer h2{
+    color:#ffd700;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(white 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:.18;
+}
+
+@media(max-width:900px){
+    .card{
+        flex-direction:column;
+        text-align:center;
+    }
+    .hero h1{font-size:2.7rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+    <div class="trophy">🏆🏆</div>
+    <h1>Merlin célèbre le PSG</h1>
+    <h2>Back-to-Back Champions d'Europe</h2>
+    <p>
+        Paris règne sur l'Europe ! Merlin rend hommage à cette génération légendaire
+        qui a offert au PSG une deuxième Ligue des Champions consécutive.
+        Une équipe de guerriers, d'artistes et de champions qui ont marqué l'histoire.
+    </p>
+</section>
+
+<h2 class="section-title">Les Héros de la Finale</h2>
+
+<section class="players">
+
+<div class="card">
+<img src="images/safonov.jpg">
+<div>
+<h3>🧤 Matvey Safonov</h3>
+<p>
+Toujours prêt lorsque l'équipe a eu besoin de lui, Safonov a démontré un professionnalisme exemplaire tout au long de la campagne européenne. Son sérieux, sa concentration et son engagement ont contribué à la force collective du PSG. Merlin tient à saluer son implication dans cette saison historique qui a vu Paris conserver son titre de champion d'Europe.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hakimi.jpeg">
+<div>
+<h3>⚡ Achraf Hakimi</h3>
+<p>
+Une locomotive lancée à pleine vitesse. Défenseur, ailier, créateur : Hakimi a tout
+fait. Ses projections offensives ont constamment déséquilibré l'adversaire et offert
+des situations dangereuses tout au long de la rencontre.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/marquinhos.jpeg">
+<div>
+<h3>🛡️ Marquinhos</h3>
+<p>
+Le capitaine a montré l'exemple. Solide dans les duels, calme sous pression et
+toujours parfaitement placé, il a dirigé son arrière-garde avec l'assurance d'un
+véritable leader de champion d'Europe.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/vitinha.jpg">
+<h3>🎩 Vitinha</h3>
+<p>
+Le chef d'orchestre du milieu parisien. Son intelligence de jeu, sa maîtrise technique
+et sa capacité à contrôler le tempo ont permis au PSG d'imposer sa domination.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/dembele.jpeg">
+<div>
+<h3>🔥 Ousmane Dembélé</h3>
+<p>
+Insaisissable. À chaque accélération, le stade retenait son souffle. Ses dribbles,
+ses changements de rythme et son activité permanente ont fait vivre un cauchemar
+à la défense adverse.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/doue.jpg">
+<div>
+<h3>🌟 Désiré Doué</h3>
+<p>
+L'avenir du football européen. Avec une maturité impressionnante et une confiance
+incroyable malgré son jeune âge, il a démontré pourquoi il représente l'une des plus
+grandes promesses du club.
+</p>
+</div>
+</div>
+
+</section>
+
+<section class="footer">
+<h2>❤️ Merci les Champions ❤️</h2>
+<p>
+Merlin n'oubliera jamais cette épopée. Deux Ligues des Champions consécutives,
+des émotions inoubliables et une place éternelle dans l'histoire du football européen.
+</p>
+<br><br>
+<h1>🏆 PARIS EST MAGIQUE 🏆</h1>
+</section>
+
+</body>
+</html>
